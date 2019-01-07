@@ -17,8 +17,8 @@
  * p2.5 = B2
  *
  * Outputs:
+ * p1.2 = Buzzer
  * p1.6 = Led
- * p1.7 = Buzzer
  *
  * this code is written by Boas van Voorst,
  * this code is only written to be used at the Hogeschool Rotterdam
@@ -43,8 +43,8 @@ int main(void)
 {
     WDTCTL = WDTPW | WDTHOLD;   // stop watchdog timer
 
-    P1DIR = 1<<7 | 1<<6 | 1<<0;// set the pins as outputs
-    P1SEL |= 1<<7; // select output pin for pwm
+    P1DIR = 1<<6 | 1<<2 | 1<<0;// set the pins as outputs
+    P1SEL |= 1<<2; // select output pin for pwm
     P1OUT = 0; // whole port 1 turns off
     P2DIR = ~( 1<<5 | 1<<4 | 1<<3 | 1<<2 | 1<<1 | 1<<0 ); // set the pins as inputs
     P2OUT = 0; // whole port 2 turns off
