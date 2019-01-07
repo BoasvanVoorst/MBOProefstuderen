@@ -102,4 +102,6 @@ void Buzzer(int PeriodTime){
     // end timer
 
     TA0CTL = TASSEL_2 + MC_0; // stops counting up the timer // stops pwm
+    
+    P1OUT &= (0<<2);
 }
