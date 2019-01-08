@@ -51,9 +51,28 @@ int main(void)
 
      __delay_cycles(1100); // delay 1 ms @ 1.1 MHz
 
-    // Student code ------------------------------------------------------------------------------------
+     while(1){ // keeps the program running
+         if((P1IN & ( 1 << 3)) != 1<<3){ // check if compare button is pressed
+             Cresult = compare(); // store the compare result
 
-    // End Student code --------------------------------------------------------------------------------
+             if (Cresult == Equal){
+                 Led(1);
+             }
+             else Led(0);
+
+             if (Cresult == Greater){
+                 Buzzer(6000);
+                 Buzzer(3000);
+                 Buzzer(1000);
+             }
+
+             if (Cresult == Less){
+                 Buzzer(1000);
+                 Buzzer(3000);
+                 Buzzer(6000);
+             }
+         }
+     }
 
     return 0;
 }
@@ -102,6 +121,4 @@ void Buzzer(int PeriodTime){
     // end timer
 
     TA0CTL = TASSEL_2 + MC_0; // stops counting up the timer // stops pwm
-    
-    P1OUT &= (0<<2);
 }
